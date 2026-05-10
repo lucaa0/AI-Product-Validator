@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@theme {
+    --color-background: #0A0A0F;
+    --color-surface: #111118;
+    --color-surface-container-lowest: #0e0e13;
+    --color-surface-container-low: #1b1b20;
+    --color-surface-container: #1f1f25;
+    --color-surface-container-high: #2a292f;
+    --color-primary: #d2bbff;
+    --color-primary-container: #7c3aed;
+    --color-on-primary: #3f008e;
+    --color-on-surface: #e4e1e9;
+    --color-on-surface-variant: #ccc3d8;
+
+    --font-inter: "Inter", sans-serif;
+    --font-headline: "Inter", sans-serif;
+    --font-body: "Inter", sans-serif;
+}
+
+body {
+    font-family: var(--font-inter);
+    background-color: var(--color-background);
+    color: var(--color-on-surface);
+    overflow-x: hidden;
+}
+
+.glass-panel {
+    background: rgba(17, 17, 24, 0.6);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ghost-border {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neon-glow {
+    box-shadow: 0 0 24px rgba(124, 58, 237, 0.15);
+}
+
+.neon-glow-strong {
+    box-shadow: 0 0 32px rgba(124, 58, 237, 0.35);
+}
+
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVFcFCdS25FZMVrW5LINpG0MxNbA_pl-TL13QTwEYoPT-MKHznHEH3C6H-5Y_hh9vvSWoeD7PBO_SCmKS1_vOsGEGTq2D3r1tMb-DrmjxbnNY3RWmGSvpdaPve6mOpE13yzrmJ3zzBZCrwM-yi02VPgpLRYZsIBJw7W6agirZHbHTdkfCPeMosxHwRVH5PWZJ7B2lVd_MqXAoCistZXTZ-oUTZaY_xVCgkuyv6lXAegX4wecn5Vq0jN-xIrseMad9Hn29mn9MXWA');
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #d2bbff 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

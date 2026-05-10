@@ -1,0 +1,54 @@
+{
+  "entities": {
+    "Result": {
+      "title": "Analysis Result",
+      "description": "Represents a completed AI analysis for a product.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "productName": { "type": "string" },
+        "category": { "type": "string" },
+        "deploymentUrl": { "type": "string" },
+        "product": { "type": "object" },
+        "market": { "type": "object" },
+        "scores": { "type": "object" },
+        "competitors": { "type": "array", "items": { "type": "object" } },
+        "recommendations": { "type": "array", "items": { "type": "object" } },
+        "strengths": { "type": "array", "items": { "type": "string" } },
+        "warnings": { "type": "array", "items": { "type": "string" } },
+        "verdict": { "type": "string" },
+        "summary": { "type": "string" },
+        "totalCost": { "type": "string" },
+        "totalWeeks": { "type": "number" },
+        "projectedROI": { "type": "string" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["userId", "productName", "category", "product", "market", "scores", "competitors", "recommendations", "strengths", "warnings", "verdict", "summary", "totalCost", "totalWeeks", "projectedROI", "createdAt"]
+    },
+    "User": {
+      "title": "User Profile",
+      "description": "Basic user preferences for settings page.",
+      "type": "object",
+      "properties": {
+        "theme": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["createdAt"]
+    }
+  },
+  "firestore": {
+    "/results/{resultId}": {
+      "schema": {
+        "$ref": "#/entities/Result"
+      },
+      "description": "Stores user product analysis results."
+    },
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "User profile settings."
+    }
+  }
+}
