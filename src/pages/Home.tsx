@@ -325,13 +325,26 @@ Generate a comprehensive validation dashboard JSON. Follow this JSON format prec
       }
     } catch (err: any) {
       console.error(err);
-      let errMsg = err.message || "An error occurred during analysis.";
-      try {
-         const parsed = JSON.parse(err.message);
-         errMsg = parsed.error;
-      } catch {
-         // ignore
+      let errMsg = "An error occurred during analysis.";
+      
+      if (err.message) {
+        try {
+          const parsed = JSON.parse(err.message);
+          // Handle standard Google API error format
+          if (parsed.error && typeof parsed.error === 'object') {
+            errMsg = parsed.error.message || JSON.stringify(parsed.error);
+          } else if (parsed.error) {
+            errMsg = parsed.error;
+          } else {
+            errMsg = err.message;
+          }
+        } catch {
+          errMsg = err.message;
+        }
+      } else if (typeof err === 'string') {
+        errMsg = err;
       }
+      
       setError(errMsg);
       setStep(2);
     } finally {
